@@ -1,0 +1,48 @@
+.loginhead{
+    font-weight:700;
+}
+.loginsubhead{
+    font-weight: 500;
+}
+.form-floating{
+    .inputtype{
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid rgba(0,0,0,.55);
+        padding-left: 0;
+    }
+    
+}
+.form-floating > {
+    label{
+        padding-left: 0;
+        font-weight: 600;
+        color: rgba(0,0,0,.55);
+    }
+    .form-control{
+        &:focus~label{
+            color:#50dae2;
+        }
+        &:focus{
+            border-color: #50dae2;
+            box-shadow: none;
+            border-width: 2px;
+        }
+    }
+}
+input{
+    padding: 15px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    border: 1px solid gray;
+}
+
+span{
+    padding: 3px;
+    color: red;
+    display: none;
+}
+
+input:invalid[focused="true"] ~ span{
+    display: block;
+}

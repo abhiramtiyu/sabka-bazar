@@ -1,24 +1,32 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import { Routes, Route, Link } from "react-router-dom";
+import Login from './routes/login/Login';
+import Register from './routes/register/Register';
+import Pplpage from './routes/ppl/Pplpage';
+import Home from './routes/home/Home';
+import Pagenotfound from "./Component/errorpages/Pagenotfound";
+import Footer from './routes/footer/Footer';
+import Header from './routes/navigation/Header';
+import { CartProvider } from './context/cartContext';
 
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+   <>
+        <CartProvider>
+        <Routes>
+          <Route path="/" element={<Header/>} >
+            <Route index element={<Home />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="pplpage" element={<Pplpage />} />
+            <Route path="*" element={<Pagenotfound />} />
+          </Route>
+        </Routes>
+        </CartProvider>
+        <Footer></Footer>
+   </>
   );
 }
 
