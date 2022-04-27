@@ -8,8 +8,8 @@ import { Outlet } from 'react-router-dom';
 import { CartContext } from '../../context/cartContext';
 import CartPopup from '../../Component/cartpopup/CartPopup';
 import Button from 'react-bootstrap/Button';
-
 import "./header.scss";
+
 const Header=()=>{
   const [cartPopup,setCartPopuup]=useState(false)
   const context = useContext(CartContext);
