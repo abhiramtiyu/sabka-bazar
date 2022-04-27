@@ -33,7 +33,7 @@ const CartPopup = ({cartData,cartClose})=>{
                 </div>)
                   :
                 (<div className="nocartdiv">
-                  <p class="h5 text-center"><strong>No items in your cart</strong></p>
+                  <p className="h5 text-center"><strong>No items in your cart</strong></p>
                   <p>Your favourite items are just a click away</p>
                 </div>)
 }
