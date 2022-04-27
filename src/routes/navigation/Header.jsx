@@ -7,7 +7,7 @@ import {useState,useRef} from 'react';
 import { Outlet } from 'react-router-dom';
 import { CartContext } from '../../context/cartContext';
 import CartPopup from '../../Component/cartpopup/CartPopup';
-
+import Button from 'react-bootstrap/Button';
 
 import "./header.scss";
 const Header=()=>{
@@ -25,9 +25,7 @@ const Header=()=>{
        <Container>
          <Link to="/" className='navbar-brand'><img src="/images/logo_2x.png" className="brandlogoimg" alt="Sabka Bazar Brand Logo" />
          </Link>
-       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-       
-       <Navbar.Collapse id="responsive-navbar-nav" className='top-bar-row'>
+       <div id="responsive-navbar-nav" className='top-bar-row navbar-collapse collapse'>
        <div className='topbar'>
          <Nav className="me-auto justify-content-end">
              <Link to="/login" className='nav-link'>SignIn</Link>
@@ -39,11 +37,11 @@ const Header=()=>{
              <Link to="/pplpage" className='nav-link'>Products</Link>
          </Nav>
          <div className='cartsection'>
-         <button className='btn cart-btn btn-default' onClick={cartShow}><i className="bi bi-cart"></i> {context.cart.length} Item</button>
+         <Button className='btn cart-btn btn-default' variant="light" onClick={cartShow}><i className="bi bi-cart"></i> {context.cart.length} Item</Button>
          
-         {cartPopup ? <CartPopup cartData={context.cart}/> : null }
+         {cartPopup ? <CartPopup cartClose={cartShow} cartData={context.cart}/> : null }
          </div>
-       </Navbar.Collapse>
+       </div>
        </Container>
      </Navbar>
       </header>

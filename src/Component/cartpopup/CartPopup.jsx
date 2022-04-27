@@ -1,12 +1,15 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-const CartPopup = ({cartData})=>{
+import './cartpopup.scss'
+
+const CartPopup = ({cartData,cartClose})=>{
     return(
         <div className='mini-cart text-start'>
-            <div className='cardHead'>
-              <p className='m-0 p-0 text-start'>MyCart({cartData.length} Item)</p>
+            <div className='cardHead d-flex justify-content-between'>
+                <div><p className='m-0 p-0 text-start font-bold'>MyCart { (cartData.length > 0) && `(${cartData.length} Item)`} </p></div>
+                <Button onClick={cartClose} variant="outline-light" className='p-1 border-0'><i className="fa fa-times" aria-hidden="true"></i></Button>
             </div>
-            <div className="cartbody">
+            <div className={ cartData.length > 0 ?  "cartbody" : "nocart d-flex align-items-center justify-content-center"}>  
                {cartData.map(({imageURL,name,id,price,quantity})=>
                 <div className="each-cart" key={id}>
                 <img src={imageURL} alt={name} />
@@ -22,16 +25,31 @@ const CartPopup = ({cartData})=>{
                 </div>
             </div>)
                }
-                <div className="cart-ad">
+
+                {cartData.length > 0 ? (<div className="cart-ad">
                   <p className='m-0'>
                     You won't find cheaper anywhere
                   </p>
-                </div>
+                </div>)
+                  :
+                (<div className="nocartdiv">
+                  <p class="h5 text-center"><strong>No items in your cart</strong></p>
+                  <p>Your favourite items are just a click away</p>
+                </div>)
+}
             </div>
             <div className="cart-footer">
               <p className='text-center'>Promo code can be applied on payment page</p>
               <div className='d-grid gap-2'>
-                <Button variant="danger">Proceed to checkOut</Button>
+              {cartData.length > 0 ?
+                <Button variant="danger">
+                  <span>Proceed to checkOut</span>
+                </Button> 
+                :
+                <Button variant="danger">
+                <span>Start Shopping</span>
+              </Button> 
+              } 
               </div>
             </div>
          </div>
