@@ -16,7 +16,16 @@ const Header=()=>{
   const cartShow=()=>{
     setCartPopuup(!cartPopup)
   }
-  console.log({context})
+  
+  const add =(e)=>{
+    context.addProductToCart(e)
+  }
+  const remove =(e)=>{
+    context.removeProductFromCart(e.id)
+  }
+ 
+
+  
     return(
       <>
         <header>
@@ -39,7 +48,7 @@ const Header=()=>{
           <div className='cartsection'>
           <Button className='btn cart-btn btn-default' variant="light" onClick={cartShow}><i className="bi bi-cart"></i> {context.cart.length} Item</Button>
           
-          {cartPopup ? <CartPopup cartClose={cartShow} cartData={context.cart}/> : null }
+          {cartPopup ? <CartPopup cartClose={cartShow} cartData={context.cart} add={add} remove={remove}/> : null }
           </div>
         </div>
        </Container>

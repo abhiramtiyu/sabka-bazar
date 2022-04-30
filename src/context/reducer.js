@@ -40,7 +40,7 @@ export const shopReducer = (state, action) => {
     case ADD_PRODUCT:
       return addProductToCart(action.product, state);
     case REMOVE_PRODUCT:
-      return removeProductFromCart(action.productId, state);
+      return removeProductFromCart(action.id, state);
     default:
       return state;
   }

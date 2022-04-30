@@ -1,4 +1,4 @@
-import { createContext ,useState,useReducer} from 'react';
+import { createContext ,useReducer} from 'react';
 import { shopReducer, ADD_PRODUCT, REMOVE_PRODUCT } from "./reducer";
 
  const CartContext = createContext({

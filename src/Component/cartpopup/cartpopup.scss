@@ -42,6 +42,10 @@
         justify-content: space-between;
     }
 }
+.checkout-button{
+    display: flex;
+    justify-content: space-between;
+}
 .overlay{
     position: fixed;
     display: none;
